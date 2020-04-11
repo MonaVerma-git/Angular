@@ -1,0 +1,96 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+        <div class="col-12 bg-color-header">
+            <nav aria-label="breadcrumb" class="navbredcram" >
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item" aria-current="page" [routerLink]="['/dashboard']"><i
+                            class="material-icons float-right">home</i></li>
+                            <li class="breadcrumb-item"  aria-current="page" [routerLink]="['/patheykram']">
+                              Class</li>
+                    <li class="breadcrumb-item"  aria-current="page" [routerLink]="['/patheykram' ,id]">Subject</li>
+                    <li class="breadcrumb-item"  aria-current="page">Create Subjects</li>
+                </ol>
+            </nav>
+        </div>
+      <div class="col-12">
+        <div class=" card pl-3 pb-5 pr-3">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title">Create Subject</h4>
+           
+          </div>
+          <div class="card-body">
+            <form [formGroup]="createpatheykramForm" class="create-patheykram-form" (submit)="create_patheykram()">
+             
+             <div class="container">
+
+              <div class="row">
+                <div class="col-6 col-md-4 col-lg-2">
+                  <div class="image-preview mb-3">
+                    <img class="upload-image" [src]="previewUrl || '../../assets/img/upload-log.png'" height="300" />
+                  </div>
+                </div>
+                <div class="col-6 col-md-8">
+                  <h4 class="w-100 font-weight-bolder">
+                    Please Select patheykram Image
+                  </h4>
+                  <div class="form-group">
+                  <input type="file" (change)="fileProgress($event)" class="form-control position-relative"
+                    id="patheykram_image" formControlName="patheykram_image" placeholder="aticle Image" style="
+                                        height: 50px;;
+                                        opacity: 1;
+                                        z-index: 1;
+                                        width: 247px;
+                                        background-image: none !important;">
+                  <div class="w-100">
+                    <p>Supported Formate : <br /> JGP, PNG, GIf</p>
+                  </div>
+                  <div *ngIf="submitted && f.patheykram_image.errors" class="alert alert-danger">
+                    <div *ngIf="f.patheykram_image.errors.required">?
+                      patheykram Image is required.
+                    </div>
+                  </div>
+                  <div *ngIf="fileUploadProgress">
+                    Upload progress: {{ fileUploadProgress }}
+                  </div>
+                  <div class="mb-3" *ngIf="uploadedFilePath">
+                    {{uploadedFilePath}}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                  <div class="form-group">
+                      <h4 for="patheykram_title them-color" class="w-100 font-weight-bolder">Subject Title</h4>
+                      <input type="text" class="form-control border border-dark pl-2" id="patheykram_title"
+                        formControlName="patheykram_title">
+                      <div *ngIf="submitted && f.patheykram_title.errors" class="alert alert-danger">
+                        <div *ngIf="f.patheykram_title.errors.required">?
+                          patheykram title is required.
+                        </div>
+                      </div>
+                    </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-12">
+                  <div class="form-group">
+                      <button class="btn btn-primary pl-3 pr-3 float-right">
+                        submit
+                      </button>
+                      <button class="btn btn-default pl-3 pr-3 float-right">
+                        Clear
+                      </button>
+                    </div>
+              </div>
+            </div>
+             </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

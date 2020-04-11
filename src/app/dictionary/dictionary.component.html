@@ -1,0 +1,98 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row ">
+      <div class="col-12 bg-color-header">
+        <nav aria-label="breadcrumb" class="navbredcram">
+          <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item" aria-current="page" [routerLink]="['/dashboard']"><i
+                class="material-icons float-right">home</i></li>
+            <li class="breadcrumb-item" aria-current="page">Dictionary</li>
+          </ol>
+        </nav>
+      </div>
+      <div class="col-12">
+        <button class="btn btn-primary pl-3 pr-3 float-right" [routerLink]="['/dictionary/create']">
+          Upload
+        </button>
+      </div>
+      <div class="col-10 col-md-8">
+        <form class="example-form">
+          <mat-form-field class="example-full-width">
+            <i class="material-icons search-icons position-absolute">
+              search
+            </i>
+            <input matInput class="auto-complete pl-5 w-100" aria-label="State" 
+            [matAutocomplete]="auto"
+              [formControl]="stateCtrl">
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let data of states" [value]="data.word">
+                <!-- <img class="example-option-img" aria-hidden [src]="state.flag" height="25"> -->
+                <span>{{data.word}}</span>
+                <!-- <small>Language: {{data.language.lanuage_name}}</small> -->
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </form>
+      </div>
+      <div class="col-12 col-md-4">
+        <i class="material-icons float-right mt-2" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false" style="font-size: 32px;">
+          reorder
+        </i>
+
+        <!-- <i class="material-icons list-icon float-right"
+              id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      list
+                      </i> -->
+
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <a class="dropdown-item" *ngFor="let name of language let i = index" (click)="addLangugae(name)"
+            [ngClass]="languageActive == name.lanuage_name ? 'bg-color-header' : ''">{{name.lanuage_name  }}</a>
+
+
+        </div>
+        <p class="float-right list-icon-text color-BCBCBC">आने भाखा जोड़व </p>
+      </div>
+
+
+      <div class="col-12">
+        <div class="row mt-4">
+          <div [ngClass]="dictionaryHeader.length ==4 ? 'col-3' : i%2 != 0 ?'col-3' : 'col-2'"
+            *ngFor="let data of dictionaryHeader let i= index;" class="font-weight-bolder color-919191">
+            <p class="mb-2 text-center pb-1" style="font-size: 21px; border-bottom: 2px solid #EFBF6B">{{data}}</p>
+          </div>
+
+        </div>
+        <div class="row " *ngFor="let data of dictionary let tem = index;">
+          <div class="col-3" [ngClass]="data.length ==4? 'col-3': i%2 != 0 ?'col-3' : 'col-2'"
+            *ngFor="let dic of data let i = index ;" class="color-919191">
+            <p class="border-bottom text-center pb-2" 
+            *ngIf='i <= data.length -2'>{{dic.name}}</p>
+            <i class="material-icons position-absulote delete-icons float-left"
+             (click)="deleteWord(data[0].id)"
+              *ngIf='i==data.length -1'>
+              delete
+            </i>
+            <i class="material-icons position-absulote delete-icons edit-icon float-left"
+              [routerLink]="['/dictionary/update/',data[0].id]" *ngIf="i==data.length -1">
+              edit
+            </i>
+            <!-- <i class="material-icons delete-icons edit-icon float-right" *ngIf="i==data.length -1"
+              (click)="readMore(data,dic.name, data[0].id)">
+              keyboard_tab
+            </i> -->
+            <i class="material-icons delete-icons edit-icon float-right" *ngIf="i==data.length -1"
+            (click)="readMore(data,dic.name, data[0].id)">
+                subdirectory_arrow_right
+                </i>
+          </div>
+          <div class="col-12" id="show{{tem}}" style="display: none">
+            <!-- <p [innerHTML]="showDetails.description"></p> -->
+            <ckeditor [editor]="Editor" [(ngModel)]="showDetails.description" (ready)="onReady($event)"
+                                            [config]=config></ckeditor>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

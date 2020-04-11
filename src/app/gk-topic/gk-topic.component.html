@@ -1,0 +1,84 @@
+<div class="main-content">
+  <div class="container-fluid">
+
+      <div class="row">
+        <div class="col-12 bg-color-header">
+            <nav aria-label="breadcrumb" class="navbredcram" >
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item" aria-current="page" [routerLink]="['/dashboard']"><i
+                            class="material-icons float-right">home</i></li>
+                            <li class="breadcrumb-item" aria-current="page">Pathyakram Class</li>
+                    <!-- <li class="breadcrumb-item"  aria-current="page">Article</li> -->
+                </ol>
+            </nav>
+        </div>
+        <div class="col-12" >
+            <button class="btn btn-primary pl-3 pr-3 float-right" data-toggle="modal"  data-target='#createExampleModal' (click)="create()" >
+                Upload 
+              </button>
+        </div>
+        <div class="col-12 col-md-6" *ngFor="let data of subjects">
+          <p class="float-left mr-3"> 
+            <i class="material-icons" style="font-size:20px;">folder</i>
+          </p>
+          <p class="float-left" [routerLink]="['/gk-written-test-question',data.id]">
+            <span class="patheykram-title"> {{data.patheykram_title}} </span>
+          </p>
+          <div>
+              <i class="material-icons position-absulote delete-icons float-left"
+              (click)="removeClass(data.id)"
+               >
+               delete
+             </i>
+             <i class="material-icons position-absulote delete-icons edit-icon float-left"  data-toggle="modal"  data-target="#exampleModal"
+               (click)="edit(data)">
+               edit
+             </i>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body p-0 ">
+
+          <h3 class="modal-title text-center text-light btn-primary mt-0 pt-2 pb-2">Update Class Name</h3>
+          <div class="container pt-3 pb-3">
+            <!-- <h3 class="">   </h3> -->
+              <div class="w-100 justify-content-center d-flex align-item-center pt-4 pb-4">
+                  <input type="text " class="text-center w-75 update-input" [(ngModel)]="_updateName">
+              </div>
+              <div class="mb-5  mt-3 pb-1" >
+                  <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary float-right"  data-dismiss="modal" (click)="updateName()">Save changes</button>
+              </div>
+          </div>
+        </div>
+        <!-- <div class="modal-footer">
+          
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="createExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body p-0 ">
+            <h3 class="modal-title text-center text-light btn-primary mt-0 pt-2 pb-2">Update Class Name</h3>
+            <div class="container pt-3 pb-3">
+                <div class="w-100 justify-content-center d-flex align-item-center pt-4 pb-4">
+                    <input type="text " class="text-center w-75 update-input" [(ngModel)]="_updateName">
+                </div>
+                <div class="mb-5  mt-3 pb-1" >
+                    <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary float-right"  data-dismiss="modal" (click)="createName()">Save changes</button>
+                </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>

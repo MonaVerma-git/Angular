@@ -1,0 +1,152 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row w-100">
+        <div class="col-12 bg-color-header">
+            <nav aria-label="breadcrumb" class="navbredcram" >
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item" aria-current="page" [routerLink]="['/dashboard']"><i
+                            class="material-icons float-right">home</i></li>
+                    <li class="breadcrumb-item" [routerLink]="['/dictionary']"  aria-current="page">Dictionary</li>
+                    <li class="breadcrumb-item"  aria-current="page">Dictionary Create</li>
+                </ol>
+            </nav>
+        </div>
+      <div class="col-12">
+        <div class=" card pl-3 pb-5 pr-3">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title">Create Dictionary</h4>           
+          </div>
+          <div class="card-body">            
+            <form [formGroup]="createForm" class="create-patheykram-form" (submit)="create_dictionary_word()">
+             <div class="container" *ngIf="!step">
+               <div class="w-100 justify-content-center align-items-center d-flex" >
+                  <div class="row w-75 ">
+                      <div class="col-6 col-md-4"  *ngIf="word.length > 0">
+                        <h4 class="w-100 font-weight-bolder">Language</h4>
+                      </div>
+      
+                      <div class="col-6 col-md-8" *ngIf="word.length > 0">
+                          <h4 class="w-100 font-weight-bolder">Word</h4>
+                      </div>
+                      <div class="row ml-0 mr-0 w-100" *ngFor = " let data of word let i = index" >
+                          <div class="col-6 col-md-4">
+                          <h4 class="w-100 font-weight-bold">{{data.language}}</h4>
+                          </div>
+                          <div class="col-6 col-md-8">
+                              <h4 class="w-100 font-weight-bold">{{data.word}}</h4>
+                          </div>
+                      </div>
+                    </div>
+               </div>
+              <div class="row w-100">
+                    <div class="col-12 col-md-6">
+                        <div class="form-group border-bottom">
+                            <h4 for="patheykram_title them-color" class="w-100 font-weight-bolder">Select Language</h4>
+                            <select class="form-control drop" formControlName="langauge" (ngModelChange)="AddLanguage($event)" >
+                                <option [value]="cat.id" *ngFor="let cat of language let i = index;">{{cat.lanuage_name}}
+                                </option>                                
+                            </select>
+                            <div *ngIf="submitted && f.langauge.errors" class="alert alert-danger">
+                              <div *ngIf="f.langauge.errors.required">?
+                                Language is required.
+                              </div>
+                            </div>
+                          </div>
+                    </div>
+                <div class="col-12 col-md-6">
+                    <div class="form-group border-bottom">
+                        <h4 for="patheykram_title them-color" class="w-100 font-weight-bolder">Word</h4>
+                        <input type="text" class="form-control" formControlName="word"  value="">
+                        <div *ngIf="submitted && f.word.errors" class="alert alert-danger">
+                          <div *ngIf="f.word.errors.required">?
+                            word is required.
+                          </div>
+                        </div>
+                      </div>
+                </div>
+              </div>               
+              <div class="col-12 col-md-6">
+                  <div class="form-group  justify-content-center d-flex align-item-center" >
+                      <button type="button" class="btn btn-primary pl-3 pr-3" 
+                      [disabled]="createForm.value.word == '' || 
+                      this.createForm.value.language == ''" 
+                      (click)="addWord()">
+                        Add More Words
+                      </button>
+                  </div>
+              </div>
+            <div class="row w-100">
+              <div class="col-12">
+                  <div class="form-group  justify-content-center d-flex align-item-center" >
+                      <button class="btn btn-primary pl-3 pr-3" [disabled]="word.length  < 2"
+                       (click)="executeStep()">
+                        Next
+                      </button>
+                    </div>
+              </div>
+            </div>
+             </div>                
+             <div class="container" *ngIf="step">
+
+          
+            <div class="row w-100">
+              <div class="col-12">
+                  <div class="form-group" style="max-height: 300px; min-height: 300px;">
+                      <h4 for="description them-color" class="w-100 font-weight-bolder">description</h4>
+                      
+                      <ckeditor [editor]="Editor" data="<p>Hello, world!</p>" class="form-control" formControlName="description"
+                        id="description">
+                      </ckeditor>
+                      <div *ngIf="submitted && f.description.errors" class="alert alert-danger">
+                        <div *ngIf="f.description.errors.required">?
+                            description is required.
+                        </div>
+                      </div>
+                    </div>
+              </div>
+            </div>
+        
+            <div class="row w-100">
+              <div class="col-12">
+                  <div class="form-group ">
+                      <button class="btn btn-primary pl-3 pr-3 float-right">
+                        submit
+                      </button>
+                      <button class="btn btn-default pl-3 pr-3 float-right">
+                        Clear
+                      </button>
+                    </div>
+              </div>
+            </div>
+             </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="addLanguage" tabindex="-1" role="dialog" aria-labelledby="addLanguageLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      
+      <div class="modal-body">
+        <div class="col-12">
+            <h5 class="modal-title" id="exampleModalLabel">Add Language</h5>
+            <p class="mt-3 text-center"> Please add Langauge name</p>
+        </div>
+        <div class="col-12 mt-3 mb-3  justify-content-center align-itemd-center d-flex">
+          <input type="text" name="language" [(ngModel)]="add_language" class="w-75" id="">
+        </div>
+        <div class="col-12">
+          <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary float-right"
+            (click)="createLanguage()"
+          [disabled]="add_language == ''">Save changes</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>

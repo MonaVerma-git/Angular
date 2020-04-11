@@ -1,0 +1,266 @@
+<div class="main-content">
+        <div class="container-fluid">
+                <div class="row">
+                        <div class="card pt-3 pb-3">
+                                <form [formGroup]="createForm" (submit)="createEvent()" class="row event-create-form">
+                                        <div class="col-12">
+                                                <div class="row ml-0 mr-0 Heading pl-5 pt-2 pb-2">
+                                                        <p class="mb-0">दिनांक तिथि</p>
+                                                </div>
+                                                <div class="row ml-0 mr-0 d-flex justify-content-center align-item-center ">
+        
+                                                        <div class="row ml-0 mr-0">
+                                                                <div class="col-4 col-md-2 pt-3">आज का दिनांक</div>
+                                                                <div class="col-8 col-md-10  form-group">
+                                                                        <mat-form-field floatLabel="never" class="pb-0" style="width:169px;">
+                                                                                <mat-label>mm/dd/yyyy</mat-label>
+                                                                                <input matInput [matDatepicker]="picker" 
+                                                                                class="form-control" formControlName="todayDate"
+                                                                                        disabled>
+                                                                                <mat-datepicker-toggle matSuffix [for]="picker">
+                                                                                </mat-datepicker-toggle>
+                                                                                <mat-datepicker #picker disabled="false">
+                                                                                </mat-datepicker>
+                                                                        </mat-form-field>
+                                                                        <div *ngIf="submitted && f.todayDate.errors" class="alert alert-danger">
+                                                                                <div *ngIf="f.todayDate.errors.required">
+                                                                                  article  is required.
+                                                                                </div>
+                                                                              </div>
+                                                                </div>
+                                                                <div class="col-4 col-md-2 mt-2">
+                                                                        छत्तीसगढ़ी महीना
+                                                                </div>
+                                                                <div class="col-8 col-md-10 form-group select-block mt-2">
+                                                                        <select class="border-input select form-control" value="चइत" [ngModel]="'चइत'"
+                                                                         formControlName="chattisgatiMahina">
+                                                                                <option selected  value="चइत">चइत</option>
+                                                                                <option value="बैसाख">बैसाख</option>
+                                                                                <option value="जेड">जेड</option>
+                                                                                <option value="असाढ़">असाढ़</option>
+                                                                                <option value="सावन">सावन</option>
+                                                                                <option value="भादो">भादो</option>
+                                                                                <option value="कुँवार">कुँवार</option>
+                                                                                <option value="कातिक">कातिक</option>
+                                                                                <option value="अग्धान">अग्धान</option>
+                                                                                <option value="पूस">पूस</option>
+                                                                                <option value="माघ">माघ</option>
+                                                                                <option value="फागुन">फागुन</option>
+                                                                        </select>
+                                                                        <div *ngIf="submitted && f.chattisgatiMahina.errors" class="alert alert-danger">
+                                                                                <div *ngIf="f.chattisgatiMahina.errors.required">
+                                                                                  article  is required.
+                                                                                </div>
+                                                                              </div>
+                                                                </div>
+                                                                <div class="col-4 col-md-2 mt-2">पक्ष के नाम </div>
+                                                                <div class="col-8 col-md-10 form-group select-block mt-2">
+                                                                        <mat-radio-group aria-label="Select an option" class="form-control" formControlName="pakhsName">
+                                                                                <mat-radio-button  value="अंधियारी" name="अंधियारी" class="mr-2 ">अंधियारी</mat-radio-button>
+                                                                                <mat-radio-button  value="अंजोरी" name="अंजोरी" class="m-0 ">अंजोरी</mat-radio-button>
+                                                                        </mat-radio-group>
+                                                                        <div *ngIf="submitted && f.pakhsName.errors" class="alert alert-danger">
+                                                                                <div *ngIf="f.pakhsName.errors.required">
+                                                                                  article  is required.
+                                                                                </div>
+                                                                              </div>
+                                                                </div>
+                                                                <div class="col-4 col-md-2 mt-2">तीथ के नाम </div>
+                                                                <div class="col-8 col-md-10 form-group mt-2">
+                                                                        <select class="border-input select mr-1 form-control"
+                                                                         formControlName="tithiName" [ngModel]="'एकम'"  value='एकम'>
+                                                                                <option value="एकम"> एकम - 1</option>
+                                                                                <option value="दूज"> दूज - 2</option>
+                                                                                <option value="तीज"> तीज - 3</option>
+                                                                                <option value="चउत"> चउत - 4</option>
+                                                                                <option value="पंचमी"> पंचमी - 5</option>
+                                                                                <option value="छठ"> छठ  - 6</option>
+                                                                                <option value="साते"> साते  - 7</option>
+                                                                                <option value="आठे"> आठे  - 8</option>
+                                                                                <option value="नवमी"> नवमी  - 9</option>
+                                                                                <option value="दशमी"> दशमी  - 10 </option>
+                                                                                <option value="एकादशी"> एकादशी - 11</option>
+                                                                                <option value="दूवास"> दूवास - 12</option>
+                                                                                <option value="तेरस"> तेरस  - 13</option>
+                                                                                <option value="चउदस"> चउदस  - 14</option>
+                                                                                <option value="अमावस"> अमावस  - 15</option>
+                                                                                <option value="पुन्नी"> पुन्नी - 15</option>
+                                                                        </select>
+                                                                                <!-- <select class="border-input select float-left mr-1 form-control"
+                                                                                 formControlName="tithiName" [ngModel]="'एकम'" value="एकम">
+                                                                                        <option value="एकम"> 01 </option>
+                                                                                        <option value="दूज"> 02 </option>
+                                                                                        <option value="तीज"> 03 </option>
+                                                                                        <option value="चउत"> 04 </option>
+                                                                                        <option value="पंचमी"> 05 </option>
+                                                                                        <option value="छठ"> 06 </option>
+                                                                                        <option value="साते"> 07 </option>
+                                                                                        <option value="आठे"> 08 </option>
+                                                                                        <option value="नवमी"> 09 </option>
+                                                                                        <option value="दशमी"> 10 </option>
+                                                                                        <option value="एकादशी"> 11 </option>
+                                                                                        <option value="दूवास"> 12 </option>
+                                                                                        <option value="तेरस"> 13 </option>
+                                                                                        <option value="चउदस"> 14 </option>
+                                                                                        <option value="अमावस"> 15 </option>
+                                                                                        <option value="पुन्नी"> 15</option>
+                                                                                </select> -->
+                                                                                <div *ngIf="submitted && f.tithiName.errors" class="alert alert-danger">
+                                                                                        <div *ngIf="f.tithiName.errors.required">
+                                                                                          article  is required.
+                                                                                        </div>
+                                                                                      </div>
+                                                                </div>
+                                                                <div class="col-4 col-md-2 mt-2">नक्षत्र के नाम</div>
+                                                                <div class="col-8 col-md-10 mt-2 form-group">
+                                                                        <select name="" class="border-input float-left select form-control" [ngModel]="'आश्विन'" value="आश्विन" formControlName="nakshraName">
+                                                                                <option value="{{item}}"
+                                                                                        *ngFor="let item of nakshtra; let i = index">
+                                                                                        {{item}}
+                                                                                </option>
+                                                                        </select>
+                                                                        
+                                                                        <label class="mr-2 ml-2 float-left mt-2">समय </label>
+                                                                        <input type="time" value="12:00" [ngModel]="'12:00'"   class="chatisgat-mahina float-left border-input form-control"
+                                                                         formControlName="nakshraStartDate"
+                                                                                value="12:30">
+                                                                        <label class="mr-2 ml-2 float-left mt-2">से </label>
+                                                                        <input type="time" value="12:00" [ngModel]="'12:00'" class="chatisgat-mahina float-left border-input form-control"
+                                                                         formControlName="nakshraEndDate"
+                                                                                value="12:30">
+                                                                        <label class="mr-1 ml-2 float-left mt-2">तक </label>
+                                                                        <div *ngIf="submitted && f.nakshraName.errors" class="alert alert-danger">
+                                                                                <div *ngIf="f.nakshraName.errors.required">
+                                                                                  article  is required.
+                                                                                </div>
+                                                                              </div>
+                                                                              <div *ngIf="submitted && f.nakshraStartDate.errors" class="alert alert-danger">
+                                                                                <div *ngIf="f.nakshraStartDate.errors.required">
+                                                                                  article  is required.
+                                                                                </div>
+                                                                              </div>
+                                                                              <div *ngIf="submitted && f.nakshraEndDate.errors" class="alert alert-danger">
+                                                                                <div *ngIf="f.nakshraEndDate.errors.required">
+                                                                                  article  is required.
+                                                                                </div>
+                                                                              </div>
+                                                                </div>
+                                                                <div class="col-4 col-md-2 mt-2">इस दिनांक या तीथ में अन्य जोडे
+                                                                </div>
+                                                                <div class="col-8 col-md-10 select-block mt-2 ">
+                                                                        <mat-checkbox id="mahuratJaynti"  (click)="update('mahurat')"  class="float-left mr-2">मुहर्त </mat-checkbox>
+                                                                        <mat-checkbox id="teharJaynti"  (click)="update('jaynti')"   class="float-left mr-2"> त्यौहार /जंयती
+                                                                        </mat-checkbox>
+                                                                        <!-- <mat-checkbox class="mr-2">ब्लॉग पोस्ट </mat-checkbox> -->
+                                                                        <!-- <mat-checkbox>अन्य</mat-checkbox> -->
+                                                                </div>
+                                                                <!-- <div class="col-8 col-md-10 mt-2">इस दिनांक या तीथ में  अन्य  जोडे  </div> -->
+                                                        </div>
+        
+                                                </div>
+                                                <div class="row ml-0 mr-0 Heading pl-5 pt-2 pb-2" *ngIf="mahuratJaynti">
+                                                        <p class="mb-0"> मुहुर्त जोडे </p>
+                                                </div>
+                                                <div *ngIf="mahuratJaynti" class="row ml-0 mr-0 d-flex justify-content-center align-item-center ">
+                                                        <div class="row ml-0 mr-0 w-100">
+        
+                                                                <div class="col-4 col-md-2 mt-2">मुहर्त के नाम व समय </div>
+                                                                <div class="col-8 col-md-10 select-block mt-2 form-group">
+                                                                        <select class="border-input select mr-1 w-100px form-control" [ngModel]="'मुलहा'"
+                                                                         formControlName="mahurate_mahuratName" value="मुलहा">
+                                                                                <option value="मुलहा"> मुलहा </option>
+                                                                        </select>
+                                                                        <label class="mr-2 ml-2 float-left mt-2">समय </label>
+                                                                        <input type="time" value="12:00" [ngModel]="'12:00'" class="chatisgat-mahina float-left border-input w-100px form-control"
+                                                                         formControlName="mahurate_startTime"
+                                                                                value="12:30">
+                                                                        <label class="mr-2 ml-2 float-left mt-2">से </label>
+                                                                        <input type="time" value="12:00" [ngModel]="'12:00'" class="chatisgat-mahina float-left border-input w-100px  form-control"
+                                                                         formControlName="mahurate_endTime"
+                                                                                value="12:30">
+                                                                        <label class="mr-1 ml-2 float-left mt-2">तक </label>
+                                                                        <div *ngIf="submitted && f.mahurate_mahuratName.errors" class="alert alert-danger">
+                                                                                <div *ngIf="f.mahurate_mahuratName.errors.required">
+                                                                                  article  is required.
+                                                                                </div>
+                                                                              </div>
+                                                                              <div *ngIf="submitted && f.mahurate_startTime.errors" class="alert alert-danger">
+                                                                                <div *ngIf="f.mahurate_endTime.errors.required">
+                                                                                  article  is required.
+                                                                                </div>
+                                                                              </div>
+                                                                              
+                                                                </div>
+        
+                                                                <div class="col-4 col-md-2 mt-2">आर्टिकल लिखे </div>
+                                                                <div class="col-8 col-md-10 select-block mt-2 form-group">
+                                                                        <mat-checkbox class="mr-2 form-control float-left" formControlName="mahurate_isArticle">Article </mat-checkbox>
+                                                                        <select class="border-input select form-control float-left" [ngModel]="'1'" value="1" formControlName="mahurate_articleId">
+                                                                                <option value="1">Article</option>
+                                                                        </select>
+                                                                        <div *ngIf="submitted && f.mahurate_isArticle.errors" class="alert alert-danger">
+                                                                                <div *ngIf="f.mahurate_isArticle.errors.required">
+                                                                                  article  is required.
+                                                                                </div>
+                                                                              </div>
+                                                                              <div *ngIf="submitted && f.mahurate_articleId.errors" class="alert alert-danger">
+                                                                                <div *ngIf="f.mahurate_articleId.errors.required">
+                                                                                  article  is required.
+                                                                                </div>
+                                                                              </div>
+                                                                </div>
+                                                                <!-- <div class="col-8 col-md-10 mt-2">इस दिनांक या तीथ में  अन्य  जोडे  </div> -->
+                                                        </div>
+                                                </div>
+                                                <div *ngIf="teharJaynti" class="row ml-0 mr-0 Heading pl-5 pt-2 pb-2">
+                                                        <p class="mb-0">त्योहार / जयंती जोडे </p>
+                                                </div>
+                                                <div class="row ml-0 mr-0 mb-5" *ngIf="teharJaynti">
+                                                        <div class="row ml-0 mr-0">
+        
+                                                                <div class="col-4 col-md-2 mt-2"> कैलेंडर चयन करें </div>
+                                                                <div class="col-8 col-md-10 select-block mt-2 form-group">
+                                                                        <mat-checkbox class="mr-2 form-control float-left" formControlName="jayanti_calenderTypeDate">दिनांक अनुसार </mat-checkbox>
+                                                                        <mat-checkbox class="mr-2 form-control float-left" formControlName="jayanti_calenderTypetithi">तीथ अनुसार </mat-checkbox>
+                                                                        
+                                                                </div>
+                                                                <div class="col-4 col-md-2 mt-2"> मुहर्त के नाम </div>
+                                                                <div class="col-8 col-md-10 select-block mt-2 form-group">
+                                                                        <input placeholder="मुहर्त के नाम" style="width: 320px;"  formControlName="jayanti_mahuratName"
+                                                                                class="border-input text-center float-left form-control" style="">
+                                                                                <div *ngIf="submitted && f.jayanti_mahuratName.errors" class="alert alert-danger">
+                                                                                        <div *ngIf="f.jayanti_mahuratName.errors.required">
+                                                                                          article  is required.
+                                                                                        </div>
+                                                                                      </div>
+                                                                </div>
+        
+        
+                                                                <div class="col-4 col-md-2 mt-2">आर्टिकल लिखे </div>
+                                                                <div class="col-8 col-md-10 select-block mt-2 form-group">
+                                                                                <!-- jayanti_isArticle -->
+                                                                        <mat-checkbox class="mr-2 float-left form-control" formControlName="jayanti_isArticle">Article </mat-checkbox>
+                                                                        <select class="border-input select form-control float-left" [ngModel]="'1'" value="1" formControlName="jayanti_articleId">
+                                                                                <option value="1">Article</option>
+                                                                        </select>
+
+                                                                </div>
+                                                                <!-- <div class="col-8 col-md-10 mt-2">इस दिनांक या तीथ में  अन्य  जोडे  </div> -->
+                                                        </div>
+                                                </div>
+                                        </div>
+                                        <div class="col-12">
+                                                <div class="form-group">
+                                                        <button class="btn btn-primary pl-3 pr-3 float-right" >
+                                                          submit
+                                                        </button>
+                                                        <button class="btn btn-default pl-3 pr-3 float-right">
+                                                            Clear
+                                                          </button>
+                                                </div>
+                                        </div>
+                                </form>
+                        </div>
+                </div>
+        </div>
+</div>

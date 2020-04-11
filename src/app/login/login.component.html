@@ -1,0 +1,67 @@
+<div class="login-contanier row w-100 ml-0 mr-0">
+    <div class="col-md-3"></div>
+        
+            <div class="col-12 col-md-6 justify-content-center align-items-center d-flex">
+                     <div class="container register-right">
+                        <h3 class="register-heading">लॉग इन करें
+                        </h3>
+                        <div class="row ml-0 mr-0 mb-3 w-100">
+                            <form (submit)='login()' class='row ml-0 mr-0 w-100'>
+                                <div class="row ml-0 mr-0 w-100 d-flex item-align-center justify-content-center">
+                                  <div class="col-12 col-md-8 " *ngIf="backEndError != ''">
+                                      <div class="invalid-feedback-form pl-5">
+                                            {{backEndError}}
+                                            <i class="material-icons" (click)="closeError()">
+                                                    close
+                                                    </i>
+                                      </div>                                      
+                                  </div>
+                                    <div class="col-12 col-md-8 register-form ">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                    <i class="material-icons icons" >
+                                                            email
+                                                            </i>
+                                                <input type="email" class="form-control pl-5   border-bottom"
+                                                    [ngClass]="!vEmail?'is-invalid' : ''" id="email" name="email"
+                                                    [(ngModel)]="email" (blur)="validateEmail()" (focus)="validEmail()"
+                                                    placeholder="First Name *" value="" />
+                                                <div class="invalid-feedback">
+                                                    {{message}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                    <i class="material-icons icons">
+                                                            vpn_key
+                                                            </i>
+                                                <input type="password" class="form-control  pl-5 border-bottom" placeholder="Password *"
+                                                    [ngClass]="!vPassword?'is-invalid' : ''" id="password"
+                                                    name="password" [(ngModel)]="password" (blur)="validatePassword()"
+                                                    (focus)="validPassword()" value="" />
+                                                <div class="invalid-feedback">
+                                                    {{message}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <p [routerLink]='["/forget-password"]' class='forget-password'>*Forget password</p>
+                                        </div>
+                                        <div class="col-md-12 d-flex item-align-center justify-content-center">
+                                            <input type="submit" class="btnRegister " value="Login" />
+                                        </div>
+
+                                        <div class="col-md-12">
+                                                <p [routerLink]='["/registration"]' class='registration-text mt-3'>पंजीकरण करे!</p>
+                                            </div>
+                                    </div>
+                                  
+                                </div>
+                            </form>
+                        </div>
+                     </div>
+            </div>
+            <div class="col-md-3"></div>
+        
+</div>

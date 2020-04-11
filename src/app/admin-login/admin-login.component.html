@@ -1,0 +1,54 @@
+<div class="row justify-content-center d-flex align-items-center w-100 h-100vh">
+
+    <div class="container register">
+        <div class="row ml-0 mr-0 justify-content-center d-flex align-items-center w-100">
+ 
+            <div class="col-md-9 col-xl-6 col-lg-6 register-right">
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <h3 class="register-heading">लॉग इन करें
+                        </h3>
+                        <div class="row ml-0 mr-0 w-100">
+                            <form (submit)='login()' class='row ml-0 mr-0 w-100'>
+                                <div class="row ml-0 mr-0 w-100 d-flex item-align-center justify-content-center">
+                                    <div class="col-md-2"></div>
+                                    <div class="col-12 col-md-8 register-form ">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <input type="email" class="form-control"
+                                                    [ngClass]="!vEmail?'is-invalid' : ''" id="email" name="email"
+                                                    [(ngModel)]="email" (blur)="validateEmail()" (focus)="validEmail()"
+                                                    placeholder="First Name *" value="" />
+                                                <div class="invalid-feedback">
+                                                    {{message}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <input type="password" class="form-control" placeholder="Password *"
+                                                    [ngClass]="!vPassword?'is-invalid' : ''" id="password"
+                                                    name="password" [(ngModel)]="password" (blur)="validatePassword()"
+                                                    (focus)="validPassword()" value="" />
+                                                <div class="invalid-feedback">
+                                                    {{message}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <p [routerLink]='["/admin-forget-password"]' class='forget-password'>*Forget password</p>
+                                        </div>
+                                        <div class="col-md-12 d-flex item-align-center justify-content-center">
+                                            <input type="submit" class="btnRegister " value="Login" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2"></div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

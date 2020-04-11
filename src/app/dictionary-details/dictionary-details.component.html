@@ -1,0 +1,82 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row ">
+            <div class="col-12 bg-color-header">
+                <nav aria-label="breadcrumb" class="navbredcram">
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item" aria-current="page" [routerLink]="['/dashboard']"><i
+                                class="material-icons float-right">home</i></li>
+                        <li class="breadcrumb-item" aria-current="page" [routerLink]="['/dictionary']">Dictionary</li>
+                        <li class="breadcrumb-item" aria-current="page">Word</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="col-12">
+                <!-- <p [innerHTML]="word.description"></p> -->
+
+                <div class="card card-profile w-100">
+                    <div class="row">
+                        <div class="col-1 col-md-4"></div>
+                        <div class="col-10 col-md-4">
+                            <div class="card-header card-header-danger btn-primary">
+                                <h4 class="card-title">Word Details</h4>
+                            </div>
+                        </div>
+                        <div class="col-1 col-md-4"></div>
+                    </div>
+                    <div class="card-body w-100 text-justify">
+
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-12 col-md-10">
+                                <div class="row">
+                                    <div class="col-md-1"></div>
+                                    <div class="col-12 col-md-10">
+                                            <table class="table  table-striped table-hover">
+                                                    <thead class="thead-dark">
+                                                            <tr>
+                                                                    <th scope="col">
+                                                                        Language
+                                                                    </th>
+                                                                    <th scope="col">
+                                                                        Word
+                                                                    </th>
+                                                                </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <th scope="row">
+                                                                {{word.language.lanuage_name}}
+                                                            </th>
+                                                            <td>
+                                                                {{word.word}}
+                                                            </td>
+                                                        </tr>
+                                                        <tr *ngFor="let data of word.words">
+                                                            <th>
+                                                                {{data.language.lanuage_name}}
+                                                            </th>
+                                                            <td>
+                                                                {{data.word}}
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                    </div>
+                                    <div class="col-md-1"></div>
+                                </div>
+                                <div class="row">
+                                    <!-- <p [innerHTML]=" word.description"></p> -->
+                                    <ckeditor [editor]="Editor" [(ngModel)]="word.description" (ready)="onReady($event)"
+                                            [config]=config></ckeditor>
+                                </div>
+
+                            </div>
+                            <div class="col-md-1"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>

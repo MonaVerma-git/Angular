@@ -1,0 +1,76 @@
+<div class="main-content">
+  <div class="container-fluid">
+
+      <div class="row">
+        <div class="col-12 bg-color-header">
+            <nav aria-label="breadcrumb" class="navbredcram" >
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item" aria-current="page" [routerLink]="['/dashboard']"><i
+                            class="material-icons float-right">home</i></li>
+                            <li class="breadcrumb-item" aria-current="page">Pathyakram Class</li>
+                    <!-- <li class="breadcrumb-item"  aria-current="page">Article</li> -->
+                </ol>
+            </nav>
+        </div>
+        <div class="col-12" >
+            <button class="btn btn-primary pl-3 pr-3 float-right" [routerLink]="['/patheykram/patheykram-create']" >
+                Upload 
+              </button>
+        </div>
+        <div class="col-12">
+
+          <div class="row" *ngIf="subjects">
+              
+            <div class="col-12 col-sm-6 col-md-3 col-lg-3 col-xl-3" *ngFor="let data of subjects">
+              <div class="card">
+                <div class="row">
+                  <div class="col-12 pt-3 mb-2 justify-content-center d-flex align-item-center" >
+                 
+                    <img src="https://i.ytimg.com/vi/IR4grhKtPNw/maxresdefault.jpg"  [routerLink]="['/patheykram',data.id]"
+                    class="image-rounds" alt="">
+                  </div>
+                  <div class="col-12 ">
+                   <p class="heading pl-3 pr-3  pt-2 text-center w-100">  {{data.name}}</p>
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+            <div class="col-12 bg-light pt-5 pb-5 justify-content-center d-flex align-item-center" *ngIf="userChannel && subject.length == 0">
+              <p class=" pt-5 pb-5 text-center w-100 text-dark font-weight-bolder">No any Content</p>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <!-- <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div> -->
+        <div class="modal-body p-0 ">
+
+          <h3 class="modal-title text-center text-light btn-primary mt-0 pt-2 pb-2">Update Class Name</h3>
+          <div class="container pt-3 pb-3">
+            <!-- <h3 class="">   </h3> -->
+              <div class="w-100 justify-content-center d-flex align-item-center pt-4 pb-4">
+                  <input type="text " class="text-center w-75 update-input" [(ngModel)]="_updateName">
+              </div>
+              <div class="mb-5  mt-3 pb-1" >
+                  <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary float-right"  data-dismiss="modal" (click)="updateName()">Save changes</button>
+              </div>
+          </div>
+        </div>
+        <!-- <div class="modal-footer">
+          
+        </div> -->
+      </div>
+    </div>
+  </div>

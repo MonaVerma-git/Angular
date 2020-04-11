@@ -1,0 +1,116 @@
+.delete-icons{
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    cursor: pointer;
+    color: #01A3A6;
+    z-index: 7;
+}
+.auto-complete{
+    display: block;
+    width: 100%;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.search-icons {
+    color: #495057;
+    left: 10px;
+    top: 13px;
+}
+
+
+
+.align-data{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+.list-icon{
+    font-size: 50px;
+    cursor: pointer;
+    color: #EFBF6B;
+}
+.bg-color-header {
+    background-color: #01A3A6 !important;
+    color: white !important;
+}
+.list-icon-text{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 50px;
+    font-size:19px;
+}
+.read-more{
+    width: fit-content;
+    border-radius: 50px;
+}
+.color-919191{
+    color: #919191
+}
+.color-BCBCBC{
+    color: #BCBCBC;
+}
+.search-input-text{
+    display: block;
+       width: 100%;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 2.25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.card .image-rachnakar{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.card .title {
+    font-size: 18px;
+    font-weight: 600;
+}
+.page-title{
+    font-size: 29px;
+    /* color: gray; */
+}
+.created-at{
+    color: grey;
+}
+.rachanakar-details{
+    font-size: 17px;
+    font-weight: 400;
+}
+.rachanakar-details-border {
+    border: 3px solid #C6B308;
+}
+.rachanakar-details-border img{
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    margin-top: -7pc;
+    margin-left: 52px;
+}
+.rachanakar-name{
+    font-size: 23px;
+    color: black;
+}

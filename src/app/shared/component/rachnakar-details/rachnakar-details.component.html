@@ -1,0 +1,51 @@
+<div class="card rachanakar-details-border">
+    <div class="row ml-0 mr-0 justiy-contact-center d-flex align-item-center">
+        <img src="../../../assets/img/woman-3083384_1920.jpg" class="rachnakar-image" alt="">
+    </div>
+    <div class="row ml-0 mr-0 mt-1 mb-2">
+    <p class="font-weight-bolder text-dark rachnakar-name text-center w-100">{{rachnakar.name}}</p>
+    </div>
+    <div class="row ml-0 mr-0 font-weight-bolder text-dark mt-1">
+        <div class="col-6">Total rachnaye : </div>
+    <div class="col-6 float-right"><p class="text-right mb-0">{{totalArtical}}</p></div>
+    </div>
+    <div class="row ml-0 mr-0 font-weight-bolder text-dark mt-1">
+            <div class="col-4">Likes :</div>
+            <div class="col-8 float-right"> <p class="text-right mb-0"> {{rachnakar.totalLike}}</p></div>
+    </div>
+    <div class="row ml-0 mr-0 font-weight-bolder text-dark mt-1">
+        <div class="col-4">Rankes :</div>
+        <div class="col-8 float-right">
+            <i class="material-icons float-right" *ngFor="let i of ranks">{{i>4?'star' : 'star_border'}}</i>
+        </div>
+    </div>
+    <div class="row ml-0 mr-0 border font-weight-bolder text-dark mt-1" *ngIf="userHasReadPermition"></div>
+    <div class="row ml-0 mr-0 font-weight-bolder text-dark mt-1" *ngIf="userHasReadPermition">
+        <div class="col-4 font-weight-bolder font-weight-bolder">Mobile No : </div>
+        <div class="col-8 float-right"> <p class="text-right mb-0 "> {{user.mobileNo}}</p></div>
+    </div>
+    <div class="row ml-0 mr-0 border font-weight-bolder text-dark mt-1" *ngIf="userHasReadPermition"></div>
+    <div class="row ml-0 mr-0 font-weight-bolder text-dark mt-1" *ngIf="userHasReadPermition">
+        <div class="col-4 font-weight-bolder">Address :</div>
+        <div class="col-8 float-right"> <p class="text-right mb-0 "> {{user.address}} </p></div>
+    </div>    
+    <div class="row ml-0 mr-0 font-weight-bolder text-dark mt-1 mb-2" >
+            <div class="col-12 font-weight-bolder">Social Media </div>
+            <div class="col-12">
+            <a href="{{rachnakar.channelsociallink[0].facebookLink}}" target="_blank">   <img src="../../../../assets/img/facebookicon.png" 
+                class="mr-2 socail-image" alt=""></a>
+                <a href="{{rachnakar.channelsociallink[0].linkedinLink}}" target="_blank">    <img src="../../../../assets/img/linkedinicon.png"
+                class="mr-2 socail-image" alt=""> </a>
+                <a href="{{rachnakar.channelsociallink[0].googleLink}}" target="_blank">   <img src="../../../../assets/img/googleicon.png" 
+                 class="mr-2 socail-image" alt=""> </a>
+                <a href="{{rachnakar.channelsociallink[0].twitterLink}}" target="_blank">    <img src="../../../../assets/img/twittericons.png"
+                 class="mr-1 socail-image" alt=""> </a>
+            </div>
+            <div class="col-12 mb-2 font-weight-bolder float-right text-dark mt-1" *ngIf="userHasReadPermition">
+                <p class="text-right font-weight-bolder float-right bg-color-header pl-3 mb-0 pr-3 "
+                [routerLink]="['/user/rachnakar',rachnakar.id]"
+                style="border-radius: 20px;" >Read More</p>
+            </div>
+    </div>
+    
+</div>

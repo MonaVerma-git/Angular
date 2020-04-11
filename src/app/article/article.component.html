@@ -1,0 +1,55 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-12 bg-color-header">
+              <nav aria-label="breadcrumb" class="navbredcram" >
+                  <ol class="breadcrumb mb-0">
+                      <li class="breadcrumb-item" aria-current="page" [routerLink]="['/dashboard']"><i
+                              class="material-icons float-right"> home</i></li>
+                              <li class="breadcrumb-item"  aria-current="page">
+                                Article</li>
+                  </ol>
+              </nav>
+          </div>
+        <div class="col-12" >
+            <button class="btn btn-primary pl-3 pr-3 float-right" [routerLink]="['/article-create']" >
+                Upload 
+              </button>
+        </div>
+        <div class="col-12">
+          <div class="row" *ngIf="articles">
+            <div class="col-12 col-sm-6 col-md-3 col-lg-3 col-xl-3" *ngFor="let data of articles">
+              <div class="card">
+                <div class="row">
+                  <div class="col-12" [routerLink]="['/article',data.id]">
+                    <i class="material-icons position-absulote delete-icons" (click)="removeArticle(data.id)">
+                        delete
+                        </i>
+                        <i class="material-icons position-absulote delete-icons edit-icon" 
+                        [routerLink]="['/article/edit',data.id]">
+                            edit
+                            </i>
+                    <img src="https://i.ytimg.com/vi/IR4grhKtPNw/maxresdefault.jpg" class="w-100"alt="">
+                  </div>
+                  <div class="col-12 ">
+                   <p class="heading pl-3 pr-3 mb-0 pt-2">  {{data.article_title}}</p>
+                  </div>
+                  <div class="col-12">
+                    <p class="pl-3 pr-3  line-dot">
+                      {{data.article_text}}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="col-12 bg-light pt-5 pb-5 justify-content-center d-flex align-item-center" *ngIf="userChannel && articles.length == 0">
+              <p class=" pt-5 pb-5 text-center w-100 text-dark font-weight-bolder">No any Content</p>
+            </div> -->
+            <div class="col-12 bg-light pt-5 pb-5 justify-content-center d-flex align-item-center" >
+              <p class=" pt-5 pb-5 text-center w-100 text-dark font-weight-bolder">Not Allow </p>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>

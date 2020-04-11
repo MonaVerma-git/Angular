@@ -1,0 +1,29 @@
+<div class="main-content">
+        <div class="container-fluid">
+                <div class="row">
+                        <div class="col-12">
+                                <button class="btn btn-primary pl-3 pr-3 float-right" [routerLink]="['/create-events']">
+                                        Upload
+                                </button>
+                        </div>
+                        <div class="card pt-3 pb-3 pl-2 pr-2">
+                                        
+                                        <div class='app-calendar' *ngIf="calendarVisible">
+                                                        <full-calendar
+                                                          #calendar
+                                                          defaultView="dayGridMonth"
+                                                          [header]="{
+                                                            left: 'prev,next today',
+                                                            center: 'title',
+                                                            right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+                                                          }"
+                                                          [plugins]="calendarPlugins"
+                                                          [weekends]="calendarWeekends"
+                                                          [events]="calendarEvents"
+                                                          (dateClick)="handleDateClick($event)"
+                                                        ></full-calendar>
+                                                      </div>
+                        </div>
+                </div>
+        </div>
+</div>

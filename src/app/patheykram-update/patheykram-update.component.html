@@ -1,0 +1,142 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+        <div class="col-12 bg-color-header">
+
+            <nav aria-label="breadcrumb" class="navbredcram" >
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item" aria-current="page" [routerLink]="['/dashboard']"><i
+                            class="material-icons float-right">home</i></li>
+                            <li class="breadcrumb-item"  aria-current="page" [routerLink]="['/patheykram']">
+                              {{articalDtailas.Class.name}}</li>
+                    <li class="breadcrumb-item"  aria-current="page"  [routerLink]="['/patheykram', articalDtailas.Class.id]">{{articalDtailas.ClassSubject.name}}</li>
+                    <li class="breadcrumb-item"  aria-current="page" [routerLink]="['/patheykram',articalDtailas.ClassSubject.id, articalDtailas.Class.id]" >Pathyakram Blogs</li>
+                    <li class="breadcrumb-item"  aria-current="page">Update</li>
+                </ol>
+            </nav>
+        </div>
+      <div class="col-12">
+        <div class=" card pl-3 pb-5 pr-3">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title">Create patheykram</h4>
+           
+          </div>
+          <div class="card-body">
+            <form [formGroup]="createpatheykramForm" class="create-patheykram-form" (submit)="create_patheykram()">
+             <div class="container" >
+              
+              <div class="row">
+                <div class="col-12">
+                    <div class="form-group">
+                        <h4 for="patheykram_title them-color" class="w-100 font-weight-bolder">Select Class</h4>
+                          <select class="form-control drop" formControlName="class" (ngModelChange)="getSubject($event)" >
+                            <option [value]="cat.id" *ngFor="let cat of class">{{cat.name}}
+                            </option>
+                        </select>
+                        <div *ngIf="submitted && f.class.errors" class="alert alert-danger">
+                          <div *ngIf="f.class.errors.required">?
+                            Class is required.
+                          </div>
+                        </div>
+                      </div>
+                </div>
+              </div>
+
+              <div class="row" >
+                <div class="col-12">
+                    <div class="form-group">
+                        <h4 for="patheykram_title them-color" class="w-100 font-weight-bolder">Select Subject</h4>
+                          <select class="form-control drop" formControlName="subject"  >
+                            <option [value]="cat.id"  *ngFor="let cat of subject">{{cat.name}}
+                            </option>
+                        </select>
+                        <div *ngIf="submitted && f.subject.errors" class="alert alert-danger">
+                          <div *ngIf="f.subject.errors.required">?
+                            subject is required.
+                          </div>
+                        </div>
+                      </div>
+                 
+                </div>
+              </div>
+            
+            
+
+              
+            <div class="row">
+              <div class="col-12">
+                  <div class="form-group">
+                      <h4 for="patheykram_title them-color" class="w-100 font-weight-bolder">patheykram Title</h4>
+                      <input type="text" class="form-control border border-dark pl-2" id="patheykram_title"
+                        formControlName="patheykram_title">
+                      <div *ngIf="submitted && f.patheykram_title.errors" class="alert alert-danger">
+                        <div *ngIf="f.patheykram_title.errors.required">?
+                          patheykram title is required.
+                        </div>
+                      </div>
+                    </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                  <div class="form-group" style="max-height: 300px; min-height: 300px;">
+                      <h4 for="patheykram_title them-color" class="w-100 font-weight-bolder">patheykram Blog</h4>
+                      <!-- <textarea class="form-control" formControlName="patheykram" id="patheykram" 
+                                        rows="3"></textarea> -->
+                      <ckeditor [editor]="Editor" data="<p>Hello, world!</p>" class="form-control" formControlName="patheykram"
+                        id="patheykram">
+                      </ckeditor>
+                      <div *ngIf="submitted && f.patheykram.errors" class="alert alert-danger">
+                        <div *ngIf="f.patheykram.errors.required">?
+                          patheykram is required.
+                        </div>
+                      </div>
+                    </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                  <div class="form-group">
+                      <h4 for="patheykram_title them-color" class="w-100 font-weight-bolder">keyword</h4>
+                      <mat-form-field class="example-chip-list keywordstyle">
+                        <mat-chip-list #chipList>
+                            <mat-chip *ngFor="let keyword of keywords" [selectable]="selectable"
+                                [removable]="removable" mat-require-match="true" (removed)="remove(keyword)">
+                                {{keyword.name}}
+                                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                            </mat-chip>
+                            <input #keywordInput matInput [formControl]="keyword" [matAutocomplete]="auto"
+                                (focus)="matAutocomplete.showPanel = true" class="form-control border border-dark pl-2"
+                                [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)">
+                        </mat-chip-list>
+                        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete"
+                            (optionSelected)="selected($event)">
+                            <mat-option *ngFor="let keyword of filteredKeyword" [value]="keyword.name">
+                                {{keyword.name}}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>
+                    </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                  <div class="form-group">
+                      <button class="btn btn-primary pl-3 pr-3 float-right">
+                        submit
+                      </button>
+                      <button class="btn btn-default pl-3 pr-3 float-right">
+                        Clear
+                      </button>
+                    </div>
+              </div>
+            </div>
+             </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

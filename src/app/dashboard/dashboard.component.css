@@ -1,0 +1,38 @@
+.card-footer button{
+    background: linear-gradient(60deg, #ffa726, #fb8c00);
+}
+.card-footer button.read-blog{
+    background: linear-gradient(60deg, #66bb6a, #43a047);
+}
+.btn-primary{
+    background: #01A3A6;
+    /* font-size: 18px;
+    font-weight: 600; */
+}
+.modal-title{
+    background-color: #01A3A6;
+    font-size: 23px;
+    font-weight: bolder;
+    text-align: center;
+}
+.create-article-form label{
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.them-color{
+    color: #01A3A6 !important;
+}
+.card .card-header-danger .card-icon, .card .card-header-danger .card-text, .card .card-header-danger:not(.card-header-icon):not(.card-header-text), .card.bg-danger, .card.card-rotate.bg-danger .front, .card.card-rotate.bg-danger .back{
+    background: linear-gradient(60deg, #01A3A6, #01A3A6);
+}
+.upload-image{
+    width: 100px;
+    height: 100px;
+
+}
+
+.border-dark{
+
+    border-color: #6c757d !important
+}

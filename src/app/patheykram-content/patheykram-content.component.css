@@ -1,0 +1,44 @@
+.align-data{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+.btn-primary{
+    background: #01A3A6 !important;
+    /* font-size: 18px;
+    font-weight: 600; */
+}
+.card .image-rachnakar{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+.card .title {
+    font-size: 18px;
+    font-weight: 600;
+}
+.page-title{
+    font-size: 29px;
+    /* color: gray; */
+}
+.created-at{
+    color: grey;
+}
+.rachanakar-details{
+    font-size: 17px;
+    font-weight: 400;
+}
+.rachanakar-details-border {
+    border: 3px solid #C6B308;
+}
+.rachanakar-details-border img{
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    margin-top: -7pc;
+    margin-left: 52px;
+}
+.rachanakar-name{
+    font-size: 23px;
+    color: black;
+}

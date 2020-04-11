@@ -1,0 +1,187 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 bg-color-header">
+        <nav aria-label="breadcrumb" class="navbredcram">
+          <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item" aria-current="page" [routerLink]="['/dashboard']"><i
+                class="material-icons float-right">home</i></li>
+            <li class="breadcrumb-item" aria-current="page">Pathyakram Create</li>
+          </ol>
+        </nav>
+      </div>
+      
+      <div class="col-12">
+        <div class=" card pl-3 pb-5 pr-3">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title">Written Test</h4>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="wittenTestForm" class="create-patheykram-form" (submit)="create_patheykram()">
+              <div class="container">
+                <div class="row">
+                  <div class="col-12" *ngIf="optionQA.length > 0">
+                      <p class="w-100 option-display text-center"> All Questions. </p>
+                  </div>
+                  <div class="col-12 border-bottom pb-3 mb-3 " *ngFor="let data of optionQA ; let i = index">
+                    <div class="row">
+                    <div class="col-10">
+                        <p class="w-100 option-display mb-0"> {{ (i + 1) + ".  " +  data.question}} </p>
+                    </div>
+                    <div class="col-2">
+                        <p class="w-100 option-display mb-0 float-right
+                        w-100"> -{{data.marks}} </p>
+                    </div>
+                    <div class="col-6">
+                       <p class="option-display" [ngClass]="data.answerA ? 'color-answer' : ''">i). {{data.optionA}}</p> </div>
+                    <div class="col-6"> <p class="option-display mb-0" [ngClass]="data.answerB ? 'color-answer' : ''"> ii). {{data.optionB}}</p> </div>
+                    <div class="col-6"> <p class="option-display mb-0" [ngClass]="data.answerC ? 'color-answer' : ''"> iii). {{data.optionC}}</p> </div>
+                    <div class="col-6"> <p class="option-display mb-0" [ngClass]="data.answerD ? 'color-answer' : ''"> iv). {{data.optionD}}</p> </div>
+                    </div>
+                    
+                  </div>
+                  <div class="col-12">
+                    <button type="button" [disabled]="wittenTestForm.invalid"
+                     class="btn btn-primary pl-3 pr-3 float-right rounded-circle add-question" (click)="addQuestionAnswer()">
+                    <i class="material-icons"> add_to_queue</i>
+                    </button>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-group">
+                      <h4 for="question them-color" class="w-100 font-weight-bolder">Question</h4>
+                      <input type="text" class="form-control border border-dark pl-2" placeholder="Question" id="question"
+                        formControlName="question">
+                      <div *ngIf="submitted && f.question.errors" class="alert alert-danger">
+                        <div *ngIf="f.question.errors.required">?
+                          Question is required.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <div class="form-group">
+                      <h4 for="optionA them-color" class="w-100 font-weight-bolder">Option A</h4>
+                      <input type="text" placeholder="option A" class="form-control border border-dark pl-2" id="optionA"
+                        formControlName="optionA">
+                      <div *ngIf="submitted && f.optionA.errors" class="alert alert-danger">
+                        <div *ngIf="f.optionA.errors.required">?
+                          Option A is required.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <div class="form-group">
+                      <h4 for="optionB them-color" class="w-100 font-weight-bolder">Option B</h4>
+                      <input type="text" placeholder="option B" class="form-control border border-dark pl-2" id="optionB"
+                        formControlName="optionB">
+                      <div *ngIf="submitted && f.optionB.errors" class="alert alert-danger">
+                        <div *ngIf="f.optionB.errors.required">?
+                          Option B is required.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <div class="form-group">
+                      <h4 for="optionC them-color" class="w-100 font-weight-bolder">Option C</h4>
+                      <input type="text" placeholder="option C" class="form-control border border-dark pl-2" id="optionC"
+                        formControlName="optionC">
+                      <div *ngIf="submitted && f.optionC.errors" class="alert alert-danger">
+                        <div *ngIf="f.optionC.errors.required">?
+                          Option C is required.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <div class="form-group">
+                      <h4 for="optionD them-color" class="w-100 font-weight-bolder">Option D</h4>
+                      <input type="text" placeholder="option D"  class="form-control border border-dark pl-2" id="optionD"
+                        formControlName="optionD">
+                      <div *ngIf="submitted && f.optionD.errors" class="alert alert-danger">
+                        <div *ngIf="f.optionD.errors.required">?
+                          Option D is required.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <div class="form-group">
+                      <h4 for="answertype them-color" class="w-100 font-weight-bolder">Answer Type</h4>
+                      <!-- <input type="text" class="form-control border border-dark pl-2" id="answer"
+              formControlName="answer"> -->
+                      <select class="form-control border border-dark pl-2" id="answertype" (change)="getValue($event)" formControlName="answertype">
+                        <option value="multi" selected>multiple choice</option>
+                        <option value="single" >single choice</option>
+                      </select>
+                      <div *ngIf="submitted && f.answertype.errors" class="alert alert-danger">
+                        <div *ngIf="f.answertype.errors.required">?
+                          Answer Type is required.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6">
+                      <div class="form-group">
+                        <h4 for="marks them-color" class="w-100 font-weight-bolder">Marks</h4>
+                        <input type="number" placeholder="marks" class="form-control border border-dark pl-2" id="answer"
+                formControlName="marks">
+                        
+                        <div *ngIf="submitted && f.marks.errors" class="alert alert-danger">
+                          <div *ngIf="f.marks.errors.required">?
+                            Marks is required.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  <div class="col-12 col-md-6">
+                    <div class="form-group">
+                      <h4 for="answer them-color" class="w-100 font-weight-bolder">Answer</h4>
+                      <!-- <input type="text" class="form-control border border-dark pl-2" id="answer"
+                        formControlName="answer"> -->
+                        <!-- {{this.wittenTestForm.value.answertype}} -->
+                        <input type="checkbox" name="a" id="" formControlName="answerA" value="a" *ngIf="wittenTestForm.value.answertype == 'multi'">
+
+                        <input type="radio" name="answer" value="a" id="" formControlName="answer" *ngIf="wittenTestForm.value.answertype == 'single'">
+                        
+                        <label class="ml-2 mr-3">A</label>
+                        <input type="checkbox" name="b" formControlName="answerB" id=""  value="b" *ngIf="wittenTestForm.value.answertype == 'multi'">
+                        <input type="radio" name="answer" value="b" id="" formControlName="answer" *ngIf="wittenTestForm.value.answertype == 'single'">
+                        <label class="ml-2 mr-3">B</label>
+                        <input type="checkbox" name="c" id=""  formControlName="answerC" value="c" *ngIf="wittenTestForm.value.answertype == 'multi'">
+                        <input type="radio" name="answer" formControlName="answer" value="c"  id="" *ngIf="wittenTestForm.value.answertype == 'single'">
+                        <label class="ml-2 mr-3">C</label>
+                        <input type="checkbox" name="d" id="" formControlName="answerD" value="d"  *ngIf="wittenTestForm.value.answertype == 'multi'">
+                        <input type="radio" name="answer" formControlName="answer" value="d" id="" *ngIf="wittenTestForm.value.answertype == 'single'">
+                        <label class="ml-2 mr-3">D</label>
+                      <div *ngIf="submitted && f.answer.errors" class="alert alert-danger">
+                        <div *ngIf="f.answer.errors.required">?
+                          Answer is required.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12">
+                    <div class="form-group">
+                      <button class="btn btn-primary pl-3 pr-3 float-right"
+                      [disabled] = "optionQA.length == 0"
+                      >
+                        submit
+                      </button>
+                      <button class="btn btn-default pl-3 pr-3 float-right">
+                        Clear
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

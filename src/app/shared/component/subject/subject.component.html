@@ -1,0 +1,16 @@
+<div class="card" >
+<div class="row ml-0 mr-0 mt-2 mb-2 justify-content-center align-item-center d-flex">
+    <!-- <img *ngIf="rachnakar.profile_url" [src]="rachnakar.profile_url" alt=""> -->
+    <img *ngIf="type == 'subject'" class="rachnakar-image" src="../../../assets/img/woman-3083384_1920.jpg"
+    [routerLink]="['/user/patheykram' ,data.id]" alt="">
+    <img *ngIf="type == 'class'" class="rachnakar-image" src="../../../assets/img/woman-3083384_1920.jpg"
+    [routerLink]="['/user/patheykram-blog',subjectId ,data.id]" alt="">
+    <!-- <div *ngIf="!rachnakar.profile_url && rachnakar && rachnakar.name">{{(rachnakar.name).charAt(0)}}</div> -->
+</div>
+<div class="row ml-0 mr-0 font-weight-bold text-dark text-center align-item-center justify-content-center d-flex rachnakar-name">
+    {{data.name}}
+</div>
+<div class="row ml-0 mr-0 mt-2 mb-1 font-weight-bold text-dark text-center align-item-center justify-content-center d-flex">
+   Read More
+</div>
+</div>

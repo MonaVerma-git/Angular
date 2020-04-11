@@ -1,0 +1,24 @@
+.profile-pick{
+    position: relative !important;
+    /* padding: 10px 15px; */
+    width: 40px !important;
+    text-align: center !important;
+    font-weight: 900 !important;
+    font-size: 26px !important;
+    /* text-transform: uppercase; */
+    border-radius: 3px !important;
+    /* line-height: 20px; */
+    /* margin-left: 5px; */
+    color: inherit !important; 
+    border-radius: 50% !important;
+    background-color: #01A3A6 !important;
+    color: white !important;
+    height: 40px !important;
+    justify-content: center !important;
+    display: flex !important;
+    padding: 0px !important;
+    padding-top: 9px !important;
+}
+.btn-primary{
+    background: #01A3A6;
+}

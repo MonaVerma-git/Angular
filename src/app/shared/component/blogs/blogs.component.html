@@ -1,0 +1,15 @@
+<div class="card" (click)="goto(data.id)" >
+<div class="row ml-0 mr-0 mt-1 mb-1 text-secondary font-weight-bold text-center align-item-center justify-content-center d-flex">
+    {{data.createdAt | date :'longDate'}}</div>
+<div class="row ml-0 mr-0">
+    <!-- <img [src]="data.articleImage || '.'" alt=""> -->
+    <img class="w-100" src="../../../../assets/img/image-slider-2.jpg" alt="">
+</div>
+<div class="row ml-0 mr-0 mt-1 mb-1 font-weight-bolder text-dark text-center align-item-center justify-content-center d-flex">
+    {{data.article_title}}
+</div>
+<div class="row ml-0 mr-0 mt-1 mb-1 text-primary font-weight-bolder text-center align-item-center justify-content-center d-flex" 
+*ngIf="data.ArticleKeyword">
+<p class="mb-0" *ngFor="let key of data.ArticleKeyword; let i = index">{{"#" + key.Keyword.name }} {{i != data.ArticleKeyword.length -1 ? ",  " : ""}}</p>
+</div>  
+</div>

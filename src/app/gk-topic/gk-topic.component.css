@@ -1,0 +1,63 @@
+.heading{
+    font-size: 20px;
+    font-weight: 900;
+    color: black;
+}
+.line-dot{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.btn-primary{
+    background: #01A3A6;
+}
+.patheykram-title{
+    font-size: 20px;
+    font-weight: 400;
+    color: #01A3A6;
+    cursor: pointer;
+}
+.delete-icons{
+    position: absolute;
+    right: 16px;
+    top: 0px;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    color: #01A3A6;
+    z-index: 7;
+}
+.create-icon{
+    /* height: 100px;
+    width: 100px; */
+    border-radius: 50%;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    color: #01A3A6;
+    z-index: 7;
+    font-size: 47px;
+}
+.update-input {
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+}
+.edit-icon{
+right: 50px;;
+}
+.image-rounds{
+    border-radius: 50%;
+    width: 100px !important;
+    height: 100px;
+}

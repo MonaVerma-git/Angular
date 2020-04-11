@@ -1,0 +1,168 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row" >
+       <!-- {{slider | json}} -->
+        <!-- <div class="owl-carousel owl-theme" *ngIf="slider && slider.length > 0" my-slider>
+          <div *ngFor="let data of slider; let i = index" >            
+             {{data.text}}            
+          </div>
+          <div *ngFor="let data of slider; let i = index">1</div>
+          <div>2</div>
+          <div>3</div>
+        </div> -->
+        <div class="col-12">
+            <img [src]="slider[0].image" style="height: 350px" class="w-100" alt="">
+            <div class="position-absolute font-weight-bolder text-light pl-4 slider-title">{{slider[0].text}}</div>
+        </div>    
+        <div class="col-12 ">
+          <div class="w-100 below-slider pt-3">
+            <div class="row">
+                <div class="col-4 mb-3" *ngFor="let data of sliderText; let i = index" >
+                    <div class="row">
+                      <div class="col-1"></div>
+                      <div class="col-1">
+                          <i class="material-icons text-right">{{data.icon}}</i>
+                      </div>
+                      <div class="col-8">
+                        <div class="w-100">
+                          <p class="mb-0 font-weight-bolder high-light-text">{{data.highLightText}}</p>
+                        </div>
+                        <div class="w-100">
+                          <p class="mb-0 sub-text">{{data.subText}}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+          </div>
+
+          </div>  
+        <div class="col-12">
+          <h2 class="w-100 text-center mt-2">हमर मनपसंद खजाना </h2>
+        </div>
+        <div class="col-12">
+            <mat-tab-group>                       
+              <mat-tab label="साहित्य">
+                <div class="row ml-0 mr-0">
+                    <div class="col-3" *ngFor="let data of articles">
+                        <div class="card mt-4 mb-4">
+                            <div class="w-100 align-data ">
+                                <img src="../../../assets/img/woman-3083384_1920.jpg" class="w-100" alt="">
+                            </div>
+                            <div class="w-100 align-data">
+                                <p class="mb-0 mt-2 title mb-2">{{data.article_title}}</p>
+                            </div>
+                            <div class="w-100 align-data">
+                                    <div class="mb-0 mt-2 mb-2">
+                                        <i class="material-icons mr-2 float-left" >favorite_border</i> <p class="mb-0 float-left">22</p>
+                                        <i class="material-icons ml-2 mr-2 float-left" >mode_comment</i> <p class="mb-0 float-left">22</p>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+              </mat-tab>
+              <mat-tab label="संस्कृति">                 <div class="row ml-0 mr-0">
+                <div class="col-3" *ngFor="let data of articles">
+                    <div class="card mt-4 mb-4">
+                        <div class="w-100 align-data ">
+                            <img src="../../../assets/img/woman-3083384_1920.jpg" class="w-100" alt="">
+                        </div>
+                        <div class="w-100 align-data">
+                            <p class="mb-0 mt-2 title mb-2">{{data.article_title}}</p>
+                        </div>
+                        <div class="w-100 align-data">
+                                <div class="mb-0 mt-2 mb-2">
+                                    <i class="material-icons mr-2 float-left" >favorite_border</i> <p class="mb-0 float-left">22</p>
+                                    <i class="material-icons ml-2 mr-2 float-left" >mode_comment</i> <p class="mb-0 float-left">22</p>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div> </mat-tab>
+              <mat-tab label="पाठ्यकम">                 <div class="row ml-0 mr-0">
+                <div class="col-3" *ngFor="let data of articles">
+                    <div class="card mt-4 mb-4">
+                        <div class="w-100 align-data ">
+                            <img src="../../../assets/img/woman-3083384_1920.jpg" class="w-100" alt="">
+                        </div>
+                        <div class="w-100 align-data">
+                            <p class="mb-0 mt-2 title mb-2">{{data.article_title}}</p>
+                        </div>
+                        <div class="w-100 align-data">
+                                <div class="mb-0 mt-2 mb-2">
+                                    <i class="material-icons mr-2 float-left" >favorite_border</i> <p class="mb-0 float-left">22</p>
+                                    <i class="material-icons ml-2 mr-2 float-left" >mode_comment</i> <p class="mb-0 float-left">22</p>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div> </mat-tab>
+              <mat-tab label="धरोहर">                 <div class="row ml-0 mr-0">
+                <div class="col-3" *ngFor="let data of articles">
+                    <div class="card mt-4 mb-4">
+                        <div class="w-100 align-data ">
+                            <img src="../../../assets/img/woman-3083384_1920.jpg" class="w-100" alt="">
+                        </div>
+                        <div class="w-100 align-data">
+                            <p class="mb-0 mt-2 title mb-2">{{data.article_title}}</p>
+                        </div>
+                        <div class="w-100 align-data">
+                                <div class="mb-0 mt-2 mb-2">
+                                    <i class="material-icons mr-2 float-left" >favorite_border</i> <p class="mb-0 float-left">22</p>
+                                    <i class="material-icons ml-2 mr-2 float-left" >mode_comment</i> <p class="mb-0 float-left">22</p>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div> </mat-tab>
+              <mat-tab label="फोटू">                 <div class="row ml-0 mr-0">
+                <div class="col-3" *ngFor="let data of articles">
+                    <div class="card mt-4 mb-4">
+                        <div class="w-100 align-data ">
+                            <img src="../../../assets/img/woman-3083384_1920.jpg" class="w-100" alt="">
+                        </div>
+                        <div class="w-100 align-data">
+                            <p class="mb-0 mt-2 title mb-2">{{data.article_title}}</p>
+                        </div>
+                        <div class="w-100 align-data">
+                                <div class="mb-0 mt-2 mb-2">
+                                    <i class="material-icons mr-2 float-left" >favorite_border</i> <p class="mb-0 float-left">22</p>
+                                    <i class="material-icons ml-2 mr-2 float-left" >mode_comment</i> <p class="mb-0 float-left">22</p>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div> </mat-tab>
+              <mat-tab label="विडियो">                 <div class="row ml-0 mr-0">
+                <div class="col-3" *ngFor="let data of articles">
+                    <div class="card mt-4 mb-4">
+                        <div class="w-100 align-data ">
+                            <img src="../../../assets/img/woman-3083384_1920.jpg" class="w-100" alt="">
+                        </div>
+                        <div class="w-100 align-data">
+                            <p class="mb-0 mt-2 title mb-2">{{data.article_title}}</p>
+                        </div>
+                        <div class="w-100 align-data">
+                                <div class="mb-0 mt-2 mb-2">
+                                    <i class="material-icons mr-2 float-left" >favorite_border</i> <p class="mb-0 float-left">22</p>
+                                    <i class="material-icons ml-2 mr-2 float-left" >mode_comment</i> <p class="mb-0 float-left">22</p>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div> </mat-tab>
+            </mat-tab-group>
+        </div>
+        <div class="row subscribe-block">
+          <div class="col-12 col-md-6">
+
+          </div>
+          <div class="col-12 col-md-6">
+            <input type="text" value="Email"> <input type="button" value="Subscribe">
+          </div>
+        </div>
+    </div>
+
+  </div>
+</div>

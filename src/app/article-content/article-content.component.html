@@ -1,0 +1,43 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row ">
+        <div class="col-12 bg-color-header">
+            <nav aria-label="breadcrumb" class="navbredcram" >
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item" aria-current="page" [routerLink]="['/dashboard']"><i
+                            class="material-icons float-right">home</i></li>
+                            <li class="breadcrumb-item"  aria-current="page" [routerLink]="['/article']">
+                              Article</li>
+                    
+                    <li class="breadcrumb-item"  aria-current="page">Article Content</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="col-12">
+                    <div class="card card-profile w-100">
+                            <div class="row">
+                                    <div class="col-1 col-md-4"></div>
+                                    <div class="col-10 col-md-4">
+                                            <div class="card-header card-header-danger btn-primary">
+                                                    <h4 class="card-title">Article Contents</h4>
+                                                </div>
+                                    </div>
+                                    <div class="col-1 col-md-4"></div>
+                            </div>
+                        <div class="card-body w-100 text-justify">
+                           <!-- <div class="row">
+                                <div class="col-1 col-md-1"></div>             
+                            <div class="col-10 col-md-10"> -->
+                                            <!-- <p [innerHTML]=" articleContent.article_text"></p> -->
+                                            <ckeditor [editor]="Editor" [(ngModel)]="articleContent.article_text" (ready)="onReady($event)"
+                                            [config]=config></ckeditor>
+                            
+                            <!-- </div>
+                            <div class="col-1 col-md-1"></div>
+                           </div> -->
+                        </div>
+                    </div>
+                </div>
+        </div>
+  </div>
+</div>

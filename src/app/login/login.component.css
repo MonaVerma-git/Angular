@@ -1,0 +1,166 @@
+.register{
+    /* background: -webkit-linear-gradient(left, #01A3A6, #00c6ff); */
+    /* margin-top: 3%; */
+    /* padding: 3%; */
+
+}
+.login-contanier{
+    /* background-image: url('../../assets/img/backgound.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 100% 100%; */
+
+    /* box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px; */
+    height: 100vh;
+}
+.login-contanier::before {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    /* background-image: linear-gradient(red, yellow); */
+    /* background: #01A3A6; */
+    /* background: -webkit-linear-gradient(to top,#01A3A6,#7fe2fd);
+    background: -o-linear-gradient(to top,#01A3A6,#7fe2fd);
+    background: -moz-linear-gradient(to top,#01A3A6,#7fe2fd);
+    background: linear-gradient(to top,#01A3A6,#7fe2fd); */
+    
+    background: -webkit-linear-gradient(to top right,#B3EAE9,#F9D2E2,#EAD8E4);
+    background: -o-linear-gradient(to top right,#B3EAE9,#F9D2E2,#EAD8E4);
+    background: -moz-linear-gradient(to top right,#B3EAE9,#F9D2E2,#EAD8E4);
+    background: linear-gradient(to top right,#B3EAE9,#F9D2E2,#EAD8E4);
+    /* opacity: .9; */
+}
+
+
+.h-100vh{
+    height: 100vh;
+}
+.register-left{
+    text-align: center;
+    color: #fff;
+    margin-top: 4%;
+}
+.register-left input{
+    border: none;
+    border-radius: 1.5rem;
+    padding: 2%;
+    width: 60%;
+    background: #f8f9fa;
+    font-weight: bold;
+    color: #383d41;
+    margin-top: 30%;
+    margin-bottom: 3%;
+    cursor: pointer;
+}
+.register-right{
+    z-index: 2;
+    background: #f8f9fa;
+    z-index: 2;
+    background: #f8f9fa;
+    box-shadow: rgba(9,30,66,.08) 0 0 0 1px,rgba(9,30,66,.08) 0 2px 4px 1px!important;
+    border-radius: 13px;
+    border: none;
+    background: -webkit-linear-gradient(to bottom right,#B3EAE9,#F9D2E2);
+    background: -o-linear-gradient(to bottom right,#B3EAE9,#F9D2E2);
+    background: -moz-linear-gradient(to bottom right,#B3EAE9,#F9D2E2);
+    background: linear-gradient(to bottom right,#B3EAE9,#F9D2E2);
+    /* border-top-left-radius: 10% 50%;
+    border-bottom-left-radius: 10% 50%; */
+}
+.icons{
+    position: absolute;
+    left: 4px;
+    top: 6px;
+}
+.register-left img{
+    margin-top: 15%;
+    margin-bottom: 5%;
+    width: 25%;
+    -webkit-animation: mover 2s infinite  alternate;
+    animation: mover 1s infinite  alternate;
+}
+@-webkit-keyframes mover {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-20px); }
+}
+@keyframes mover {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-20px); }
+}
+.register-left p{
+    font-weight: lighter;
+    padding: 12%;
+    margin-top: -9%;
+}
+.register .register-form{
+    padding: 10%;
+    margin-top: 10%;
+}
+.btnRegister{
+    border: none;
+    border-radius: 1.5rem;
+    padding: 2%;
+    background: #01A3A6;
+    color: #fff;
+    font-weight: 600;
+    width: 210px;
+    cursor: pointer;
+}
+.register .nav-tabs{
+    margin-top: 3%;
+    border: none;
+    background: #01A3A6;
+    border-radius: 1.5rem;
+    width: 28%;
+    float: right;
+}
+.register .nav-tabs .nav-link{
+    padding: 2%;
+    height: 34px;
+    font-weight: 600;
+    color: #fff;
+    border-top-right-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
+}
+.register .nav-tabs .nav-link:hover{
+    border: none;
+}
+.register .nav-tabs .nav-link.active{
+    width: 100px;
+    /* color: #01A3A6; */
+    border: 2px solid #01A3A6;
+    border-top-left-radius: 1.5rem;
+    border-bottom-left-radius: 1.5rem;
+}
+.register-heading{
+    text-align: center;
+    margin-top: 8%;
+    /* margin-bottom: -15%; */
+    /* color: #01A3A6; */
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+    .register-left img{
+        margin-top: 0px !important;
+    }
+    .register-left input{
+        margin-top: 0px !important;
+    }
+    }
+    .forget-password{
+        font-size: 16px;
+        cursor: pointer;
+        /* color:; */
+    }
+    .registration-text{
+        font-size: 21px;
+        text-align: center;
+        font-weight: 500;
+        cursor: pointer;
+        /* color: #01A3A6; */
+    }

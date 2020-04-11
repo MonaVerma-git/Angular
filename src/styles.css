@@ -1,0 +1,189 @@
+/* @import '~@fullcalendar/core/main.css';
+@import '~@fullcalendar/daygrid/main.css';
+@import '~@fullcalendar/timegrid/main.css'; */
+@font-face {
+    font-family: 'Kruti_Dev';
+    src: url('./assets/fonts/Kruti_Dev_010.ttf');
+  }
+  form{
+    /* font-family: Kruti_Dev !important; */
+}
+.bg-color-header{
+    background-color: #01A3A6;
+    color: white;
+}
+ .breadcrumb {
+    background-color: transparent !important; 
+}
+.mat-form-field-appearance-legacy .mat-form-field-underline{
+    display: none !important;
+}
+.breadcrumb-item + .breadcrumb-item::before{
+    color: white !important;
+}
+    .bg-color-header{
+        background-color: #01A3A6;
+        color: white;
+    }
+     .breadcrumb {
+        background-color: transparent !important; 
+    }
+    .breadcrumb-item + .breadcrumb-item::before{
+        color: white !important;
+    }
+    
+    .form-control, .is-focused .form-control{
+        background-image: none !important;
+    }
+    .mat-form-field-appearance-legacy .mat-form-field-underline{
+        background-color:unset !important
+    }
+    .mat-form-field-infix{
+        border-top: none !important;
+    }
+    .breadcrumb-item{
+        cursor: pointer;
+    }
+    .ck.ck-editor{
+        border: 1px solid #343a40 !important
+    }
+    .cursor-pointer{
+        cursor: pointer;
+    }
+
+
+.form-control, .is-focused .form-control{
+    background-image: none !important;
+}
+.mat-form-field-appearance-legacy .mat-form-field-underline{
+    background-color:unset !important
+}
+.mat-form-field-infix{
+    border-top: none !important;
+}
+.breadcrumb-item{
+    cursor: pointer;
+}
+.ck.ck-editor{
+    border: 1px solid #343a40 !important
+}
+.cursor-pointer{
+    cursor: pointer;
+}
+
+.invalid-feedback-form{
+    font-size: 15px;
+    font-weight: 500;
+    background: #F9D2E2;
+    padding: 3px;
+    color: red;
+    border-left: 10px solid red; 
+}
+.invalid-feedback-form i{
+    position: absolute;
+    right: 28px;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: red;
+    color: #F9D2E2;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    top: 5px;
+    z-index: 144;
+}
+.ck.ck-content {
+    max-height: 230px;
+    overflow: scroll;
+}
+
+/* loader css start */
+.image-loader{
+    background: transparent url('/assets/images/6px6.gif') center no-repeat;
+    background-size: 150px 100px;
+  }
+  
+  #preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    display: none;
+  }
+  
+  #loader {
+    display: block;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    width: 150px;
+    height: 150px;
+    margin: -75px 0 0 -75px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #9370db;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+  }
+  
+  #loader:before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #ba55d3;
+    -webkit-animation: spin 3s linear infinite;
+    animation: spin 3s linear infinite;
+  }
+  
+  #loader:after {
+    content: "";
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #ff00ff;
+    -webkit-animation: spin 1.5s linear infinite;
+    animation: spin 1.5s linear infinite;
+  }
+  
+  @-webkit-keyframes spin {
+    0% {
+      -webkit-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes spin {
+    0% {
+      -webkit-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* loader css end */
+  

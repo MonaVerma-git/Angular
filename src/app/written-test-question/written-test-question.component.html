@@ -1,0 +1,228 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 bg-color-header" *ngIf="question && question.length > 0">
+        <nav aria-label="breadcrumb" class="navbredcram" *ngIf="question && question[0]">
+          <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item" aria-current="page" [routerLink]="['/dashboard']"><i
+                class="material-icons float-right">home</i></li>
+            <li class="breadcrumb-item"
+              *ngIf="question && question[0] && question[0].Patheykram && question[0].Patheykram.Class"
+              aria-current="page" [routerLink]="['/patheykram']">
+              {{question[0].Patheykram.Class.name}}</li>
+            <li class="breadcrumb-item" aria-current="page"
+              *ngIf="question && question[0] && question[0].Patheykram && question[0].Patheykram.Class"
+              [routerLink]="['/patheykram', question[0].Patheykram.Class.id]">
+              {{question[0].Patheykram.ClassSubject.name}}</li>
+            <li class="breadcrumb-item" aria-current="page"
+              [routerLink]="['/patheykram/patheykram-blogs', question[0].patheykramId]">Pathyakram Blogs</li>
+            <li class="breadcrumb-item" aria-current="page">Written Test</li>
+          </ol>
+        </nav>
+      </div>
+      <div class="col-12">
+        <button class="btn btn-primary pl-3 pr-3 float-right" [routerLink]="['/patheykram/written-test', id]">
+          Upload
+        </button>
+      </div>
+      <div class="col-12 col-md-8">
+        <div class="row pt-3 ml-0 mr-0">
+          <!-- <div class="col-12 border-bottom pb-3 mb-3 " *ngFor="let data of optionQA ; let i = index"> -->
+          <div class="row" *ngIf="showQuestion && showQuestion.writtenTestOption">
+            <div class="col-10 mb-2">
+              <p class="w-100 option-display mb-0"> {{showQuestion.index +".) " +  showQuestion.question}} </p>
+            </div>
+            <div class="col-2 mb-2">
+              <p class="w-100 option-display mb-0  text-right"> -{{showQuestion.marks}} </p>
+
+            </div>
+            <i class="material-icons position-absulote delete-icons edit-icon" data-toggle="modal"
+              data-target="#UpdateChannel">
+              edit
+            </i>
+            <i class="material-icons position-absulote delete-icons" (click)="removeWrittenTest(showQuestion.id)">
+              delete
+            </i>
+            <!-- {{showQuestion.writtenTestOption | json}} -->
+            <div class="col-6 " *ngFor="let data of showQuestion.writtenTestOption; let i = index">
+              <p class="option-display pl-2"
+                [ngClass]="data.WrittenTestAnswers && data.WrittenTestAnswers.length >0 ? 'color-answer' : ''">
+                i). {{data.option}}
+              </p>
+
+            </div>
+            <!-- <div class="col-6"> <p class="option-display mb-0" [ngClass]="data.answerB ? 'color-answer' : ''"> ii). {{data.optionB}}</p> </div>
+                      <div class="col-6"> <p class="option-display mb-0" [ngClass]="data.answerC ? 'color-answer' : ''"> iii). {{data.optionC}}</p> </div>
+                      <div class="col-6"> <p class="option-display mb-0" [ngClass]="data.answerD ? 'color-answer' : ''"> iv). {{data.optionD}}</p> </div> -->
+          </div>
+
+          <!-- </div> -->
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+        <div class="w-100 border card">
+          <div class="row ml-0 mr-0">
+            <div class="col-4 " *ngFor="let qNo of question ; let i = index">
+              <div class="question-p w-100 card mt-3 mb-3" [ngClass]="qNo.id == showQuestion.id ? 'active' : ''"
+                (click)="displayContent(i)">
+                <p class="mb-0 justify-content-center align-items-center font-weight-bolder d-flex">{{i + 1}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="UpdateChannel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <h5 class="modal-title text-light pt-2 pb-2">Update Background</h5>
+        <div class="card-body">
+          <div class="row">
+            <form [formGroup]="wittenTestForm" class="create-patheykram-form" (submit)="updateWrittenTest()">
+              <div class="container">
+                <div class="row">
+
+                  <div class="col-12">
+                    <div class="form-group">
+                      <h4 for="question them-color" class="w-100 font-weight-bolder">Question</h4>
+                      <input type="text" class="form-control border border-dark pl-2" placeholder="Question"
+                        id="question" formControlName="question">
+                      <div *ngIf="submitted && f.question.errors" class="alert alert-danger">
+                        <div *ngIf="f.question.errors.required">?
+                          Question is required.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <div class="form-group">
+                      <h4 for="optionA them-color" class="w-100 font-weight-bolder">Option A</h4>
+                      <input type="text" placeholder="option A" class="form-control border border-dark pl-2"
+                        id="optionA" formControlName="optionA">
+                      <div *ngIf="submitted && f.optionA.errors" class="alert alert-danger">
+                        <div *ngIf="f.optionA.errors.required">?
+                          Option A is required.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <div class="form-group">
+                      <h4 for="optionB them-color" class="w-100 font-weight-bolder">Option B</h4>
+                      <input type="text" placeholder="option B" class="form-control border border-dark pl-2"
+                        id="optionB" formControlName="optionB">
+                      <div *ngIf="submitted && f.optionB.errors" class="alert alert-danger">
+                        <div *ngIf="f.optionB.errors.required">?
+                          Option B is required.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <div class="form-group">
+                      <h4 for="optionC them-color" class="w-100 font-weight-bolder">Option C</h4>
+                      <input type="text" placeholder="option C" class="form-control border border-dark pl-2"
+                        id="optionC" formControlName="optionC">
+                      <div *ngIf="submitted && f.optionC.errors" class="alert alert-danger">
+                        <div *ngIf="f.optionC.errors.required">?
+                          Option C is required.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <div class="form-group">
+                      <h4 for="optionD them-color" class="w-100 font-weight-bolder">Option D</h4>
+                      <input type="text" placeholder="option D" class="form-control border border-dark pl-2"
+                        id="optionD" formControlName="optionD">
+                      <div *ngIf="submitted && f.optionD.errors" class="alert alert-danger">
+                        <div *ngIf="f.optionD.errors.required">?
+                          Option D is required.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <div class="form-group">
+                      <h4 for="answertype them-color" class="w-100 font-weight-bolder">Answer Type</h4>
+
+                      <select class="form-control border border-dark pl-2" id="answertype" formControlName="answertype">
+                        <option value="multi">multiple choice</option>
+                        <option value="single">single choice</option>
+                      </select>
+                      <div *ngIf="submitted && f.answertype.errors" class="alert alert-danger">
+                        <div *ngIf="f.answertype.errors.required">?
+                          Answer Type is required.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <div class="form-group">
+                      <h4 for="marks them-color" class="w-100 font-weight-bolder">Marks</h4>
+                      <input type="number" placeholder="marks" class="form-control border border-dark pl-2" id="answer"
+                        formControlName="marks">
+
+                      <div *ngIf="submitted && f.marks.errors" class="alert alert-danger">
+                        <div *ngIf="f.marks.errors.required">?
+                          Marks is required.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <div class="form-group">
+                      <h4 for="answer them-color" class="w-100 font-weight-bolder">Answer</h4>
+                      <!-- <input type="text" class="form-control border border-dark pl-2" id="answer"
+                        formControlName="answer"> -->
+                      <!-- {{ wittenTestForm.value.answertype}} -->
+                      <input type="checkbox" name="a" id="" formControlName="answerA" value="a"
+                        *ngIf="wittenTestForm.value.answertype == 'multi'">
+                      <input type="radio" name="answer" value="a" id="" formControlName="answer"
+                        *ngIf="wittenTestForm.value.answertype == 'single'">
+                      <label class="ml-2 mr-3">A</label>
+                      <input type="checkbox" name="b" formControlName="answerB" id="" value="b"
+                        *ngIf="wittenTestForm.value.answertype == 'multi'">
+                      <input type="radio" name="answer" value="b" id="" formControlName="answer"
+                        *ngIf="wittenTestForm.value.answertype == 'single'">
+                      <label class="ml-2 mr-3">B</label>
+                      <input type="checkbox" name="c" id="" formControlName="answerC" value="c"
+                        *ngIf="wittenTestForm.value.answertype == 'multi'">
+                      <input type="radio" name="answer" formControlName="answer" value="c" id=""
+                        *ngIf="wittenTestForm.value.answertype == 'single'">
+                      <label class="ml-2 mr-3">C</label>
+                      <input type="checkbox" name="d" id="" formControlName="answerD" value="d"
+                        *ngIf="wittenTestForm.value.answertype == 'multi'">
+                      <input type="radio" name="answer" formControlName="answer" value="d" id=""
+                        *ngIf="wittenTestForm.value.answertype == 'single'">
+                      <label class="ml-2 mr-3">D</label>
+                      <div *ngIf="submitted && f.answer.errors" class="alert alert-danger">
+                        <div *ngIf="f.answer.errors.required">?
+                          Answer is required.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12">
+                    <div class="form-group">
+                      <button class="btn btn-primary pl-3 pr-3 float-right" data-dismiss="modal"> Submit </button>
+                      <button type="button" class="btn btn-default pl-3 pr-3 float-right" data-dismiss="modal"> Clear
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

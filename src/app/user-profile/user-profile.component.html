@@ -1,0 +1,32 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row d-flex justify-content-center ">
+         
+            <div class="col-12 col-md-4" *ngIf="userInfo && !isEditActive">
+                <div class="card card-profile">
+                    <div class="card-avatar">
+                        <a href="javascript:void(0)">
+                            <img class="img" *ngIf="userInfo.gender == 'male' || userInfo.gender == 'Male'" src="./assets/img/faces/marc.jpg" />
+                            <img class="img" *ngIf="userInfo.gender == 'female' || userInfo.gender == 'FeMale'" src="./assets/img/faces/marc.jpg"
+                                alt="">
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <h6 class="card-category text-gray" *ngIf="userInfo.name">{{userInfo.name}}</h6>
+                        <h4 class="card-title">{{userInfo.email}}</h4>
+                        <p class="card-description">
+                            {{userInfo.gender}} <br />
+                            {{userInfo.dob | date:"mediumDate" }} <br />
+                            {{userInfo.mobileNo}} <br />
+                            {{userInfo.address}}
+                        </p>
+                     
+                    </div>
+                </div>
+            
+            </div>
+
+        </div>
+    </div>
+</div>
+
